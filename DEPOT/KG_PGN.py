@@ -1087,189 +1087,6 @@ def simulation(work_base):
     #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-    #-------------- TEST: Crazing ------------------#
-
-
-
-    # define a simulation task, prepare simulation folder structure
-    crazing_t3=Simulation(project=project,name='crazing_t3',input='./input_scripts/crazing.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": "./quench3_t3/restart/restart.data",
-        "-var swap_file": './crazing_t3/swap.txt',
-        "-var vel": '0.06',
-        "-var Temp": '0.4',
-        "-var n_steps": '2000000',
-        "-var dump_file": './crazing_t3/trajectory/dump.lammpsdata',
-        "-var bonddump_file": './crazing_t3/trajectory/bonddump.txt',
-        "-var angledump_file": './crazing_t3/trajectory/angledump.txt',
-        "-var restart_data": "./crazing_t3/restart/restart.data"
-    }
-    crazing_t3.load_variables(variables)
-
-    # define a simulation task, prepare simulation folder structure
-    crazing_test1=Simulation(project=project,name='crazing_test1',input='./input_scripts/crazing_test.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": "./quench3/restart/restart.data",
-        "-var swap_file": './crazing_t3/swap.txt',
-        "-var vel": '0.06',
-        "-var Temp": '0.4',
-        "-var n_steps": '2000000',
-        "-var dump_file": './crazing_test1/trajectory/dump.lammpsdata',
-        "-var bonddump_file": './crazing_test1/trajectory/bonddump.txt',
-        "-var angledump_file": './crazing_test1/trajectory/angledump.txt',
-        "-var restart_data": "./crazing_test1/restart/restart.data"
-    }
-    crazing_test1.load_variables(variables)
-
-    # define a simulation task, prepare simulation folder structure
-    crazing_test2=Simulation(project=project,name='crazing_test2',input='./input_scripts/crazing_test.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": "./quench3_t2/restart/restart.data",
-        "-var swap_file": './crazing_test2/swap.txt',
-        "-var vel": '0.06',
-        "-var Temp": '0.4',
-        "-var n_steps": '2000000',
-        "-var dump_file": './crazing_test2/trajectory/dump.lammpsdata',
-        "-var bonddump_file": './crazing_test2/trajectory/bonddump.txt',
-        "-var angledump_file": './crazing_test2/trajectory/angledump.txt',
-        "-var restart_data": "./crazing_test2/restart/restart.data"
-    }
-    crazing_test2.load_variables(variables)
-
-    # define a simulation task, prepare simulation folder structure
-    crazing_test3=Simulation(project=project,name='crazing_test3',input='./input_scripts/crazing_test.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": "./quench3_t3/restart/restart.data",
-        "-var swap_file": './crazing_test3/swap.txt',
-        "-var vel": '0.06',
-        "-var Temp": '0.4',
-        "-var n_steps": '2000000',
-        "-var dump_file": './crazing_test3/trajectory/dump.lammpsdata',
-        "-var bonddump_file": './crazing_test3/trajectory/bonddump.txt',
-        "-var angledump_file": './crazing_test3/trajectory/angledump.txt',
-        "-var restart_data": "./crazing_test3/restart/restart.data"
-    }
-    crazing_test3.load_variables(variables)
-
-    # define a simulation task, prepare simulation folder structure
-    crazing_erate=Simulation(project=project,name='crazing_erate',input='./input_scripts/crazing_erate.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": "./quench3/restart/restart.data",
-        "-var swap_file": './crazing_erate/swap.txt',
-        "-var vel": '0.001',
-        "-var Temp": '0.4',
-        "-var n_steps": '1000000',
-        "-var bonddump_file": './crazing_erate/trajectory/bonddump.txt',
-        "-var angledump_file": './crazing_erate/trajectory/angledump.txt',
-        "-var dump_file": './crazing_erate/trajectory/dump.lammpsdata',
-        "-var restart_data": "./crazing_erate/restart/restart.data"
-    }
-    crazing_erate.load_variables(variables)
-
-    # define a simulation task, prepare simulation folder structure
-    crazing_t2_erate=Simulation(project=project,name='crazing_t2_erate',input='./input_scripts/crazing_erate.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": "./quench3_t2/restart/restart.data",
-        "-var swap_file": './crazing_t2_erate/swap.txt',
-        "-var vel": '0.001',
-        "-var Temp": '0.4',
-        "-var n_steps": '1000000',
-        "-var bonddump_file": './crazing_t2_erate/trajectory/bonddump.txt',
-        "-var angledump_file": './crazing_t2_erate/trajectory/angledump.txt',
-        "-var dump_file": './crazing_t2_erate/trajectory/dump.lammpsdata',
-        "-var restart_data": "./crazing_t2_erate/restart/restart.data"
-    }
-    crazing_t2_erate.load_variables(variables)
-
-    # define a simulation task, prepare simulation folder structure
-    crazing_t3_erate=Simulation(project=project,name='crazing_t3_erate',input='./input_scripts/crazing_erate.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": "./quench3_t3/restart/restart.data",
-        "-var swap_file": './crazing_t3_erate/swap.txt',
-        "-var vel": '0.001',
-        "-var Temp": '0.4',
-        "-var n_steps": '1000000',
-        "-var bonddump_file": './crazing_t3_erate/trajectory/bonddump.txt',
-        "-var angledump_file": './crazing_t3_erate/trajectory/angledump.txt',
-        "-var dump_file": './crazing_t3_erate/trajectory/dump.lammpsdata',
-        "-var restart_data": "./crazing_t3_erate/restart/restart.data"
-    }
-    crazing_t3_erate.load_variables(variables)
-
-    #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    #-------------- TEST: Triaxial ------------------#
-
-
-    # define a simulation task, prepare simulation folder structure
-    triaxial_tension=Simulation(project=project,name='triaxial_tension',input='./input_scripts/triaxial_tension.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": './quench3/restart/restart.data',
-        "-var stressCurve": './triaxial_tension/log/stressCurve.dat'
-    }
-    triaxial_tension.load_variables(variables)
-
-    # define a simulation task, prepare simulation folder structure
-    triaxial_tension_t2=Simulation(project=project,name='triaxial_tension_t2',input='./input_scripts/triaxial_tension.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": './quench3_t2/restart/restart.data',
-        "-var stressCurve": './triaxial_tension_t2/log/stressCurve.dat'
-    }
-    triaxial_tension_t2.load_variables(variables)
-
-    # define a simulation task, prepare simulation folder structure
-    triaxial_tension_t3=Simulation(project=project,name='triaxial_tension_t3',input='./input_scripts/triaxial_tension.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": './quench3_t3/restart/restart.data',
-        "-var stressCurve": './triaxial_tension_t3/log/stressCurve.dat'
-    }
-    triaxial_tension_t3.load_variables(variables)
-
-    #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    #-------------- TEST: NVE ------------------#
-
-
-    # define a simulation task, prepare simulation folder structure
-    NVE=Simulation(project=project,name='NVE',input='./input_scripts/NVE.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": './quench3/restart/restart.data',
-        "-var NP_radius": f'{NP_radius}',
-        "-var NVE_trial": 'NVE'
-    }
-    NVE.load_variables(variables)
-
-
-    # define a simulation task, prepare simulation folder structure
-    NVE_t2=Simulation(project=project,name='NVE_t2',input='./input_scripts/NVE.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": './quench3_t2/restart/restart.data',
-        "-var NP_radius": f'{NP_radius}',
-        "-var NVE_trial": 'NVE_t2'        
-    }
-    NVE_t2.load_variables(variables)
-
-
-    # define a simulation task, prepare simulation folder structure
-    NVE_t3=Simulation(project=project,name='NVE_t3',input='./input_scripts/NVE.inp')
-    # define and load simulation variables
-    variables={
-        "-var datafile": './quench3_t3/restart/restart.data',
-        "-var NP_radius": f'{NP_radius}',
-        "-var NVE_trial": 'NVE_t3'
-    }
-    NVE_t3.load_variables(variables)
 
 
     #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1943,121 +1760,56 @@ def simulation(work_base):
     slurm.submit(quench3_t3,run=True,dependency=quench2_t3,executable=executable)
 
 
-    #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-    #-------------- SUBMIT: Crazing ------------------#
-
-    
-    # crazing.create(new_folder=True,force=True)
-    # slurm.submit(crazing,run=True,dependency=quench3, executable=executable, resources=resources_normal)
-    
-    # crazing_t2.create(new_folder=True,force=True)
-    # slurm.submit(crazing_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources_normal)
-
-    
-    # crazing_t3.create(new_folder=True,force=True)
-    # slurm.submit(crazing_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources_normal)
-    
-    #crazing_test1.create(new_folder=True,force=True)
-    #slurm.submit(crazing_test1,run=True,dependency=quench3, executable=executable_test, resources=resources_normal)
-
-    #crazing_test2.create(new_folder=True,force=True)
-    #slurm.submit(crazing_test2,run=True,dependency=quench3_t2, executable=executable_test, resources=resources_normal)
-
-    #crazing_test3.create(new_folder=True,force=True)
-    #slurm.submit(crazing_test3,run=True,dependency=quench3_t3, executable=executable_test, resources=resources_normal)
-    
-    # crazing_erate.create(new_folder=True,force=True)
-    # slurm.submit(crazing_erate,run=True,dependency=quench3, executable=executable, resources=resources_normal)
-
-    # crazing_t2_erate.create(new_folder=True,force=True)
-    # slurm.submit(crazing_t2_erate,run=True,dependency=quench3_t2, executable=executable, resources=resources_normal)
-
-    # crazing_t3_erate.create(new_folder=True,force=True)
-    # slurm.submit(crazing_t3_erate,run=True,dependency=quench3_t3, executable=executable, resources=resources_normal)
-
-
-    #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-    # #-------------- SUBMIT: Triaxial ------------------#
-
-
-    # triaxial_tension.create(new_folder=True,force=True)
-    # slurm.submit(triaxial_tension,run=True,dependency=quench3, executable=executable, resources=resources_normal)
-
-    # triaxial_tension_t2.create(new_folder=True,force=True)
-    # slurm.submit(triaxial_tension_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources_normal)
-
-    # triaxial_tension_t3.create(new_folder=True,force=True)
-    # slurm.submit(triaxial_tension_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources_normal)
-
-    #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-    # #-------------- SUBMIT: NVE ------------------#
-
-
-    # NVE.create(new_folder=True,force=True)
-    # slurm.submit(NVE,run=True,dependency=quench3, executable=executable, resources=resources)
-
-    # NVE_t2.create(new_folder=True,force=True)
-    # slurm.submit(NVE_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources)
-
-    # NVE_t3.create(new_folder=True,force=True)
-    # slurm.submit(NVE_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources)    
-
 
 
     # #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    # #-------------- SUBMIT: Shear (Rate: 0.01) (Temp: 0.4) ------------------#
+    #-------------- SUBMIT: Shear (Rate: 0.01) (Temp: 0.4) ------------------#
 
-    # shear_01.create(new_folder=True,force=True)
-    # slurm.submit(shear_01,run=True,dependency=quench3, executable=executable, resources=resources)
+    shear_01.create(new_folder=True,force=True)
+    slurm.submit(shear_01,run=True,dependency=quench3, executable=executable, resources=resources)
 
-    # shear_01_t2.create(new_folder=True,force=True)
-    # slurm.submit(shear_01_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources)
+    shear_01_t2.create(new_folder=True,force=True)
+    slurm.submit(shear_01_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources)
 
-    # shear_01_t3.create(new_folder=True,force=True)
-    # slurm.submit(shear_01_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources)    
-
-
-    # #-------------- SUBMIT: Shear (Rate: 0.001) (Temp: 0.4) ------------------#
-
-    # shear_001.create(new_folder=True,force=True)
-    # slurm.submit(shear_001,run=True,dependency=quench3, executable=executable, resources=resources)
-
-    # shear_001_t2.create(new_folder=True,force=True)
-    # slurm.submit(shear_001_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources)
-
-    # shear_001_t3.create(new_folder=True,force=True)
-    # slurm.submit(shear_001_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources)    
+    shear_01_t3.create(new_folder=True,force=True)
+    slurm.submit(shear_01_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources)    
 
 
-    # #-------------- SUBMIT: Shear (Rate: 0.0001) (Temp: 0.4) ------------------#
+    #-------------- SUBMIT: Shear (Rate: 0.001) (Temp: 0.4) ------------------#
 
-    # shear_0001.create(new_folder=True,force=True)
-    # slurm.submit(shear_0001,run=True,dependency=quench3, executable=executable, resources=resources)
+    shear_001.create(new_folder=True,force=True)
+    slurm.submit(shear_001,run=True,dependency=quench3, executable=executable, resources=resources)
 
-    # shear_0001_t2.create(new_folder=True,force=True)
-    # slurm.submit(shear_0001_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources)
+    shear_001_t2.create(new_folder=True,force=True)
+    slurm.submit(shear_001_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources)
 
-    # shear_0001_t3.create(new_folder=True,force=True)
-    # slurm.submit(shear_0001_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources)    
+    shear_001_t3.create(new_folder=True,force=True)
+    slurm.submit(shear_001_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources)    
 
 
-    # #-------------- SUBMIT: Shear (Rate: 0.00001) (Temp: 0.4) ------------------#
+    #-------------- SUBMIT: Shear (Rate: 0.0001) (Temp: 0.4) ------------------#
 
-    # shear_00001.create(new_folder=True,force=True)
-    # slurm.submit(shear_00001,run=True,dependency=quench3, executable=executable, resources=resources)
+    shear_0001.create(new_folder=True,force=True)
+    slurm.submit(shear_0001,run=True,dependency=quench3, executable=executable, resources=resources)
 
-    # shear_00001_t2.create(new_folder=True,force=True)
-    # slurm.submit(shear_00001_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources)
+    shear_0001_t2.create(new_folder=True,force=True)
+    slurm.submit(shear_0001_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources)
 
-    # shear_00001_t3.create(new_folder=True,force=True)
-    # slurm.submit(shear_00001_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources)    
+    shear_0001_t3.create(new_folder=True,force=True)
+    slurm.submit(shear_0001_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources)    
+
+
+    #-------------- SUBMIT: Shear (Rate: 0.00001) (Temp: 0.4) ------------------#
+
+    shear_00001.create(new_folder=True,force=True)
+    slurm.submit(shear_00001,run=True,dependency=quench3, executable=executable, resources=resources)
+
+    shear_00001_t2.create(new_folder=True,force=True)
+    slurm.submit(shear_00001_t2,run=True,dependency=quench3_t2, executable=executable, resources=resources)
+
+    shear_00001_t3.create(new_folder=True,force=True)
+    slurm.submit(shear_00001_t3,run=True,dependency=quench3_t3, executable=executable, resources=resources)    
 
 
     #-------------- SUBMIT: Shear (Rate: 0.005) (Temp: 0.4) ------------------#
