@@ -30,7 +30,7 @@ A tedious but extremely important next step is to enter each inp file within inp
 
 Finally, enter "KG_PGN.py" within the main renamed directory. Enter the correct simulation details at the beginning of the file and execute the code. This will submit all jobs (simulations) specified in "KG_PGN.py". For more information on the methods of "KG_PGN.py" please see "https://github.com/Chenghao-Wu/AutoMD.py.git".
 
-Simulation output files should be generated with ease assume all simulation specifications and modifications were correctly impletmented. 
+Simulation output files should be generated with ease assuming all simulation specifications and modifications were correctly impletmented. 
 
 
 
