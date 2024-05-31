@@ -9,51 +9,8 @@ KG_PGNs provides tools to build and simulate coarse-grained mechanical models of
 
 ## Getting Started
 
-### Setup
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-repo/KG_PGNs.git
-   cd KG_PGNs
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# KG_PGNs
-------------------------------------------------------------------------------------------------------------------------------------------------------------
-Build and simulate Polymer Grafted Nanoparticle (PGN) coarse-grained mechanical models.
-------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------
-This repository follows the work of the published work:
-Moussavi, Arman, et al. "Characterizing the shear response of polymer-grafted nanoparticles." The Journal of Chemical Physics 160.13 (2024).
-
-
-
-DEPOT
+### DEPOT
 
 All necessary files originate from the DEPOT. The most effective way to utilize the DEPOT is to first copy the directory and rename it as the system of interest:
 
@@ -88,7 +45,7 @@ Simulation output files should be generated with ease assuming all simulation sp
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-ANALYSIS
+### ANALYSIS
 
 Within the ANALYSIS directory, many codes can be found to analyze the simulation results. While these codes serve as good starting points in the analysis, most are specifically designed within a workflow (eg. create txt file to store results then use the txt output to plot...). Please contact the author for any questions.
 
