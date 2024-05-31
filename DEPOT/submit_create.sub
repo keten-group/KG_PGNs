@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH -A <ALLOCATION>
+#SBATCH -p <PARTITION>
+#SBATCH -t <TIME>
+#SBATCH -N <NODES>
+#SBATCH --mem=<MEMORY>
+#SBATCH --ntasks-per-node=<TASKS_PER_NODE>
+#SBATCH --job-name=<JOB_NAME>
+#SBATCH --output=History
+
+module purge
+module load anaconda3/2018.12
+source activate pgn # CONDA ENVIRONMENT
+
+python create_PGNs.py

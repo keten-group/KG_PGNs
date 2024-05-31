@@ -1,0 +1,182 @@
+#!/bin/bash
+### LAMMPS Input file for Coarse Grained Generic shear Calc ###
+# Authors: Arman Moussavi, Zhenghao Wu
+
+#This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+
+# ----------------- Input Variables -----------------
+
+#   ${datafile}
+#   ${NP_radius}
+#   ${Temp}
+#   ${strain_rate}
+#   ${ts}
+#   ${maxStrain}
+#   ${ts_save} 
+#   ${trial}
+#   ${info_save}
+#   ${shear_trial}
+#   
+#   
+#   
+#   
+#   
+
+
+
+
+# ----------------- Atom Definition Section -----------------
+
+
+units		lj
+atom_style	full
+#processors	* * 1
+
+#read_restart	
+read_data	${datafile}
+
+
+# ----------------  Variable Definitions ------------------
+
+variable R_NP equal ${NP_radius}
+variable delta_1 equal ${R_NP}-0.5
+variable delta_2 equal 2*(${R_NP}-0.5)
+variable T equal ${Temp}               
+
+# Uniaxial Shear Deformation
+variable tmp equal "lx"
+variable L0 equal ${tmp}
+variable erate equal ${strain_rate}
+variable stp equal "step"
+variable dt equal ${ts}
+variable strain equal "(v_L0*v_erate*v_stp*v_dt)/v_L0"
+variable tmpe equal "temp"
+variable p1 equal "v_strain"
+variable p2 equal "-pxy"
+variable p3 equal "-pxz"
+variable p4 equal "-pyz"
+variable shear_steps equal ${maxStrain}/(${strain_rate}*${ts})
+variable volume equal vol
+
+
+
+fix stressCurve all print ${ts_save} "${volume} ${p1} ${p2} ${p3} ${p4}" file ./${shear_trial}/log/stress_strain_R${NP_radius}_${trial}_shear.dat screen no
+
+
+
+
+
+
+
+
+
+group pgn type 1 3
+group		polymers type 2
+
+bond_style	quartic
+bond_coeff	1 2351.0 0.0 -0.7425 1.5 94.745
+special_bonds	lj 1.0 1.0 1.0
+angle_style	harmonic
+angle_coeff	1 5.0 120
+
+
+pair_style	hybrid lj/cut 2.5 lj/expand 2.5
+pair_modify	shift yes
+pair_coeff 	1 2 lj/cut 1.0 1.0
+pair_coeff	1 1 none
+pair_coeff	1 3 none
+pair_coeff	2 2 lj/cut 1.0 1.0
+pair_coeff 	2 3 lj/expand 1.0 1.0 ${delta_1} 
+pair_coeff	3 3 lj/expand 1.0 1.0 ${delta_2} 1.122462 
+
+neighbor	0.6 multi
+comm_modify     mode multi
+neigh_modify	exclude type 1 1
+neigh_modify	exclude type 1 3 
+neigh_modify	exclude type 3 3 
+
+#--------------------------
+
+#-----------FIXES-----------------
+
+fix 	       	grafts pgn rigid/nvt molecule temp ${T} ${T} 1.0
+
+
+fix 5 polymers bond/break 1 1 1.5 prob 1.0 49829
+
+
+compute         1 all property/local btype batom1 batom2
+#---------------------------
+# Distribute on processor
+
+balance		0.9 shift xyz 10 1.1
+fix             fix5 all balance 10000 0.9 shift xyz 10 1.1
+
+#---------------------------
+
+
+reset_timestep	0
+
+
+
+################################
+#### SHEAR DEFORMATION
+###############################
+change_box     all triclinic
+
+reset_timestep	0
+
+
+#the relevant stress component is calculated and outputted in the last column of the thermo_style
+compute     stressAtom all stress/atom NULL
+compute     stressSum all reduce sum c_stressAtom[4]
+ 
+
+
+
+# ----------------------------------
+## THERMO_STYLE
+# ----------------------------------
+thermo_style   custom step temp press lx ly lz vol density v_p1 c_stressSum epair ebond eangle edihed evdwl ecoul pe ke etotal pxx pyy pzz pxy pxz pyz spcpu v_p2 v_p3 v_p4
+
+
+
+#----------------------------------
+#-------------DEFORM---------------
+
+fix 7 all deform 1 xy erate ${strain_rate} remap v flip no units box
+fix 8 polymers nvt/sllod temp ${T} ${T} 1
+
+
+
+#---------------------------------
+
+##----------------------------
+## DUMP
+# ----------------------------------
+dump 1 all custom ${info_save} ./${shear_trial}/trajectory/shear_*.xyz id type x y z ix iy iz
+
+dump_modify 1 first no sort id
+
+dump            dump3 all local ${info_save} ./${shear_trial}/log/bonddump_file_${trial}.txt index c_1[1] c_1[2] c_1[3]
+
+
+
+timestep       		${ts}
+run				${shear_steps}
+
+
+# ----------------------------------
+## SHEAR RESTART
+# ----------------------------------
+write_restart ./${shear_trial}/restart/restart_R${NP_radius}_${trial}_shear.restart
+
+write_data ./${shear_trial}/restart/restart_R${NP_radius}_${trial}_shear.data nocoeff

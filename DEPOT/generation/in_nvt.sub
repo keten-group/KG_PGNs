@@ -1,0 +1,14 @@
+#!/bin/bash -x
+#SBATCH --nodes 1
+#SBATCH --ntasks 20
+#SBATCH --account=p31790
+#SBATCH --time=4:00:00
+#SBATCH --mem=18G
+#SBATCH --partition=short
+#SBATCH --output in_nvt.o
+#SBATCH --job-name in_nvt
+
+module purge
+module load mpi/openmpi-4.1.1-gcc.10.2.0 gcc/9.2.0 hdf5/1.8.10 fftw/3.3.8-openmpi-4.0.5-gcc-10.2.0
+
+mpirun -np 20 /home/zwq2834/packages/lammps2022Apr/build/lmp -i in_nvt.inp  -log in_nvt.log > in_nvt.screen
