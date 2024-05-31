@@ -3,9 +3,10 @@ Build and simulate Polymer Grafted Nanoparticle (PGN) coarse-grained mechanical 
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 This repository follows the work of the published work:
 Moussavi, Arman, et al. "Characterizing the shear response of polymer-grafted nanoparticles." The Journal of Chemical Physics 160.13 (2024).
-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 DEPOT
