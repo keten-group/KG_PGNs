@@ -69,12 +69,12 @@ All necessary files originate from the DEPOT. Follow these steps to utilize the 
 """
 
 # 1. Copy and Rename the Directory:
-# Copy the DEPOT directory and rename it to match your system of interest.
-# For example:
-# PGN_R1_rho05_N20
+Copy the DEPOT directory and rename it to match your system of interest.
+For example:
+PGN_R1_rho05_N20
 
 # 2. Configure PGN Parameters:
-# Inside the new directory, open `create_PGNs.py` and enter the parameter space of interest in the section labeled "PGN Parameters".
+Inside the new directory, open `create_PGNs.py` and enter the parameter space of interest in the section labeled "PGN Parameters".
 
 # Example parameters to enter:
 chain_length = 20
@@ -91,25 +91,25 @@ PGN_R1_rho02_N20.txt
 """
 
 # 3. Setup Initial Configuration:
-# In the new directory, update the `in_nvt.inp` file:
-# - Change the `read_data` field to match your system.
-# - Update the `group pgn id` fields according to the system of interest.
+In the new directory, update the `in_nvt.inp` file:
+- Change the `read_data` field to match your system.
+- Update the `group pgn id` fields according to the system of interest.
 
 """
 # 4. Modify Input Scripts:
-# In the `input_scripts` directory, update `change_mole_bond_swap.py` with the parameters of interest and execute the code to ensure the data file format is correct for usage.
+In the `input_scripts` directory, update `change_mole_bond_swap.py` with the parameters of interest and execute the code to ensure the data file format is correct for usage.
 
 # 5. Update INP Files:
-# Manually update each INP file within `input_scripts`, using the PGN IDs from the `create_PGNs.py` output text file to ensure correct nanoparticle identification throughout all simulations.
+Manually update each INP file within `input_scripts`, using the PGN IDs from the `create_PGNs.py` output text file to ensure correct nanoparticle identification throughout all simulations.
 
 # 6. Run Simulations:
-# In the main renamed directory, open `KG_PGN.py`, enter the correct simulation details at the beginning of the file, and execute the code to submit all jobs (simulations) specified in `KG_PGN.py`. For more details on the methods used, refer to AutoMD.py (https://github.com/Chenghao-Wu/AutoMD.py.git).
+In the main renamed directory, open `KG_PGN.py`, enter the correct simulation details at the beginning of the file, and execute the code to submit all jobs (simulations) specified in `KG_PGN.py`. For more details on the methods used, refer to AutoMD.py (https://github.com/Chenghao-Wu/AutoMD.py.git).
 
-# Assuming all specifications and modifications are correctly implemented, simulation output files should be generated with ease.
+ Assuming all specifications and modifications are correctly implemented, simulation output files should be generated with ease.
 """
 
 # Example:
-# In `KG_PGN.py`, you might have code similar to this:
+In `KG_PGN.py`, you might have code similar to this:
 simulation_details = {
     "temperature": 300,
     "pressure": 1.0,
@@ -118,8 +118,8 @@ simulation_details = {
 
 """
 # Analysis:
-# Within the `ANALYSIS` directory, you will find various scripts to analyze the simulation results. While these scripts are good starting points, they are often designed for specific workflows (e.g., creating a text file to store results and then using the text output to plot). For specific questions, please contact the author.
+Within the `ANALYSIS` directory, you will find various scripts to analyze the simulation results. While these scripts are good starting points, they are often designed for specific workflows (e.g., creating a text file to store results and then using the text output to plot). For specific questions, please contact the author.
 
-# Feel free to reach out for further clarification or assistance with the workflow and analysis.
+Feel free to reach out for further clarification or assistance with the workflow and analysis.
 """
 
